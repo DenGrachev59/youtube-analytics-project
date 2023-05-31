@@ -1,12 +1,12 @@
 import json
 import os
 from googleapiclient.discovery import build
-
-import isodate
+#
+# import isodate
 
 from helper.youtube_api_manual import youtube
-
-
+api_key: str = os.getenv('API_KEY_YOUTUBE')
+youtube = build('youtube', 'v3', developerKey=api_key)
 class Channel:
     """Класс для ютуб-канала"""
 
@@ -17,6 +17,6 @@ class Channel:
     def print_info(self) -> None:
         """Выводит в консоль информацию о канале."""
         channel_id = self.channel_id  # HighLoad Channel
-        channel = youtube.channels().list(id=channel_id, part='snippet,statistics').execute()
+        channel = youtube.channels() .list(id=channel_id, part='snippet,statistics').execute()
 
-        return channel
+        return print(json.dumps(channel, indent=2, ensure_ascii=False))
