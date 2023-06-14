@@ -1,7 +1,7 @@
 import json
 import os
 
-import self
+# import self
 from googleapiclient.discovery import build
 
 #
